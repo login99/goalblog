@@ -1,0 +1,133 @@
+﻿@model goalblog.Models.TableClass
+@using WebApplication1.Models
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div class="body">
+        <section class="top-bar">
+            <h2>
+                GOALBLOG - Футбольний блог в якому ви дізнаєтесь найсучасніші новини футболу
+            </h2>
+        </section>
+        <section class="left-sidebar">
+            <div class="container-logo">
+                <a href="~/News/Index">
+                    <img src="~/Content/image/logo1.png" alt="Gaol Blog" id="logo2">
+                </a>
+            </div>
+            <ul class="left-menu">
+                @foreach (Class c in Model.classes)
+                {
+                    <li>@Html.ActionLink(c.Name, "Index", new { Id = c.Id })</li>
+                }
+            </ul>
+        </section>
+        <section class="head-content">
+@using (Html.BeginForm("Create", "TableFs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <
+            <div class="form-horizontal">
+                <h4>TableF</h4>
+                <hr />
+                <div class="form-group">
+                    NumberTable
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.NumberTable, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    Icon
+                    <div class="col-md-10">
+                        <input type="file" multiple name="upload">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Name
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Game
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.Game, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    WinGame
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.WinGame, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    DrawGame
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.DrawGame, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    LoseGame
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.LoseGame, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Goal
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.Goal, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    MissGoal
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.MissGoal, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Score
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tables.Score, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    Class
+                    <div class="col-md-10">
+                        @foreach (Class sd in Model.classes)
+            {
+                if (sd != null)
+                {
+                    <input type="checkbox" name="selectClasses" value="@sd.Id" />@sd.Name<br>
+    }
+}
+                    </div>
+                </div>Object reference not set to an instance of an object."
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+        </section>
+    </div>

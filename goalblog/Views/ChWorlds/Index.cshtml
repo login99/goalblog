@@ -1,0 +1,62 @@
+﻿@model IEnumerable<goalblog.Models.Grope>
+@using goalblog.Models
+@{
+    ViewBag.Title = "Чемпіонат Світу";
+}
+
+<div class="body">
+    <section class="top-bar">
+        <h2>
+            GOALBLOG - Футбольний блог в якому ви дізнаєтесь найсучасніші новини футболу
+        </h2>
+    </section>
+    <section class="left-sidebar">
+        <div class="container-logo">
+            <a href="~/News/Index">
+                <img src="~/Content/image/logo1.png" alt="Gaol Blog" id="logo2">
+            </a>
+        </div>
+        <ul class="left-menu">
+            @foreach (Grope c in ViewBag.gr)
+            {
+                <li>@Html.ActionLink(c.Name, "Details", new { Id = c.Id })</li>
+            }
+        </ul>
+    </section>
+    <section class="head-content">
+        @foreach (var gr in Model)
+        {
+        <table class="tables">
+            <tr class="nav-table">
+                <th class="up-menu" colspan="3">@gr.Name</th>
+                <td class="up-menu">І</td>
+                <td class="up-menu">В</td>
+                <td class="up-menu">Н</td>
+                <td class="up-menu">П</td>
+                <td class="up-menu">З</td>
+                <td class="up-menu">П</td>
+                <td class="up-menu">О</td>
+            </tr>
+            @foreach (var c in gr.chw)
+            {
+        <tr class="rezult">
+            <td class="score-table numb">@c.NumbGr</td>
+            <td class="score-table">
+                @Html.Raw("<img width=20px src=\"data:image*;base64,"
+                                     + Convert.ToBase64String(c.Icon) + "\" />")
+            </td>
+            <td class="score-table ">@c.Name</td>
+            <td class="score-table">@c.Game</td>
+            <td class="score-table">@c.WinGame</td>
+            <td class="score-table">@c.DrawGame</td>
+            <td class="score-table">@c.LoseGame</td>
+            <td class="score-table">@c.Goal</td>
+            <td class="score-table">@c.MissGoal</td>
+            <td class="score-table">@c.Score</td>
+        </tr>
+
+            }
+        </table>
+        }
+    </section>
+</div>

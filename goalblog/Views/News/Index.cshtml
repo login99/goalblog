@@ -1,0 +1,91 @@
+﻿
+@model goalblog.Models.IndexViewModel
+@using goalblog.Helpers
+@using goalblog.Models
+@{
+    ViewBag.Title = "GoalBlog";
+}
+<div class="body">
+    <section class="top-bar">
+        <h2>
+            GOALBLOG - Футбольний блог в якому ви дізнаєтесь найсучасніші новини футболу
+        </h2>
+    </section>
+    <section class="left-sidebar">
+        <div class="container-logo">
+            <a href="~/News/Index">
+                <img src="~/Content/image/logo1.png" alt="Gaol Blog" id="logo2">
+            </a>
+        </div>
+        <ul class="left-menu">
+            @foreach (var c in Model.classes)
+            {
+                 <li>@Html.ActionLink(c.Name, "Index", new { Id = c.Id })</li>
+            }
+        </ul>
+    </section>
+    <section class="head-content">
+        <h2>@ViewBag.head</h2>
+        @foreach (var item in Model.fews)
+        {
+            <div class="News">
+                <div class="Title">
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </h2>
+                </div>
+                <div class="News-Info">
+                    <div class="Author">Автор: @Html.DisplayFor(modelItem => item.Author)</div>
+                    <div class="Date">Дата публікації: @item.date.ToString("hh:mm dd.MM.yyyy")</div>
+                </div>
+                <div class="Image">
+                    @if (item.View != null)
+                    {
+                        @Html.Raw("<img src=\"data:image*;base64,"
+                                                                  + Convert.ToBase64String(item.View) + "\" />")
+                    }
+                </div>
+                <div class="Text">
+                    @Html.Raw(item.Text)
+                </div>
+            </div>
+        }
+        <div class="btn-group">
+
+        </div>
+        <section class="button-car">
+            <div class="button-nav">
+                @if (@Model.PageInfo.PageNumber != 1)
+                {
+                    int i = @Model.PageInfo.PageNumber - 1;
+                    <a href="?page=@i" class="">
+                        <img src="~/Content/icons/back.svg" id="buck">Попередня сторінка
+                    </a>}
+                else
+                {<a href="#" class="">
+                        <img src="~/Content/icons/back.svg" id="buck">Попередня сторінка
+                    </a>
+                }
+            </div>
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }), "button")
+            <div class="button-nav">
+                @if (@Model.PageInfo.PageNumber != Model.PageInfo.TotalPages)
+                {
+                    int i = @Model.PageInfo.PageNumber + 1;
+
+                    <a href="?page=@i">
+                        Наступна сторінка
+                        <img src="~/Content/icons/forward.svg" id="forward">
+                    </a>}
+                else
+                {
+                    <a href="?page=@Model.PageInfo.PageNumber+1">
+                        Наступна сторінка
+                        <img src="~/Content/icons/forward.svg" id="forward">
+                    </a>
+                }
+            </div>
+
+        </section>
+    </section>
+</div>

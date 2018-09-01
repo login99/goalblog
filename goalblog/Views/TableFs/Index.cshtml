@@ -1,0 +1,109 @@
+﻿@model goalblog.Models.TableClassView
+@using WebApplication1.Models
+@{
+    ViewBag.Title = "Турнірна Таблиця";
+}
+<div class="body">
+    <section class="top-bar">
+        <h2>
+            GOALBLOG - Футбольний блог в якому ви дізнаєтесь найсучасніші новини футболу
+        </h2>
+    </section>
+    <section class="left-sidebar">
+        <div class="container-logo">
+            <a href="~/News/Index">
+                <img src="~/Content/image/logo1.png" alt="Gaol Blog" id="logo2">
+            </a>
+        </div>
+        <ul class="left-menu">
+            @foreach (Class c in Model.classes)
+    {
+        if (@c.Id != 10 && @c.Id != 11)
+        {
+            <li>@Html.ActionLink(c.Name, "Index", new { Id = c.Id })</li>
+}
+}
+        </ul>
+    </section>
+    <section class="head-content">
+        <h2 class="table-head">@ViewBag.Cs.Name</h2>
+        <table class="tables">
+            @if (ViewBag.Cs.Id == 6)
+    {
+        int i = 0;
+        foreach (var c in Model.tables)
+        {
+            if (c.NumberTable == 1)
+            {
+
+                i = i + 1;
+                <tr><td colspan="10"></td></tr>
+                <tr class="nav-table">
+                    <th colspan="3" class="up-menu">Группа @i</th>
+                    <td class="up-menu">І</td>
+                    <td class="up-menu">В</td>
+                    <td class="up-menu">Н</td>
+                    <td class="up-menu">П</td>
+                    <td class="up-menu">З</td>
+                    <td class="up-menu">П</td>
+                    <td class="up-menu">О</td>
+                </tr>
+
+    }
+
+
+        <tr class="rezult">
+            <td class="score-table numb">@c.NumberTable</td>
+            <td class="score-table">
+                @Html.Raw("<img width=20px src=\"data:image*;base64,"
+                                + Convert.ToBase64String(c.Icon) + "\" />")
+            </td>
+            <td class="score-table">@c.Name</td>
+            <td class="score-table">@c.Game</td>
+            <td class="score-table">@c.WinGame</td>
+            <td class="score-table">@c.DrawGame</td>
+            <td class="score-table">@c.LoseGame</td>
+            <td class="score-table">@c.Goal</td>
+            <td class="score-table">@c.MissGoal</td>
+            <td class="score-table">@c.Score</td>
+        </tr>
+
+}
+}
+else
+{
+        <tr class="nav-table">
+            <th class="up-menu" colspan="3">Команда</th>
+            <td class="up-menu">І</td>
+            <td class="up-menu">В</td>
+            <td class="up-menu">Н</td>
+            <td class="up-menu">П</td>
+            <td class="up-menu">З</td>
+            <td class="up-menu">П</td>
+            <td class="up-menu">О</td>
+        </tr>
+foreach (var c in Model.tables)
+{
+
+        <tr class="rezult">
+            <td class="score-table">@c.NumberTable</td>
+            <td class="score-table">
+                @Html.Raw("<img width=25px src=\"data:image*;base64,"
+                                + Convert.ToBase64String(c.Icon) + "\" />")
+            </td>
+            <td class="score-table">@c.Name</td>
+            <td class="score-table">@c.Game</td>
+            <td class="score-table">@c.WinGame</td>
+            <td class="score-table">@c.DrawGame</td>
+            <td class="score-table">@c.LoseGame</td>
+            <td class="score-table">@c.Goal</td>
+            <td class="score-table">@c.MissGoal</td>
+            <td class="score-table">@c.Score</td>
+        </tr>
+}
+}
+
+        </table>
+
+        </section>
+</div>

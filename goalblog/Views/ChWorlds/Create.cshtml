@@ -1,0 +1,119 @@
+﻿@model goalblog.Models.ChWorld
+@using goalblog.Models
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+div class="body">
+<section class="top-bar">
+    <h2>
+        GOALBLOG - Футбольний блог в якому ви дізнаєтесь найсучасніші новини футболу
+    </h2>
+</section>
+<section class="head-content">
+    @using (Html.BeginForm("Create", "ChWorlds", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="form-horizontal">
+            <h4>ChWorld</h4>
+            <hr />
+            <div class="form-group">
+                NumbGr
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumbGr, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Icon
+                <div class="col-md-10">
+                    <input type="file" multiple name="upload">
+                </div>
+            </div>
+
+            <div class="form-group">
+                Name
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Game
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Game, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                WinGame
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WinGame, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                DrawGame
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DrawGame, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                LoseGame
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LoseGame, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Goal
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Goal, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                MissGoal
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MissGoal, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Score
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Score, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="form-group">
+                Class
+                <div class="col-md-10">
+                    @*@foreach (Grope sd in ViewBag.gr)
+                    {
+                        if (sd != null)
+                        {
+                            <input type="checkbox" name="selectClasses" value="@sd.Id" />@sd.Name<br>
+                        }
+                    }*@
+                    @Html.DropDownListFor(Model=>Model.GropeId,ViewBag.gr as SelectList)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</section>

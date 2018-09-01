@@ -1,0 +1,63 @@
+﻿@model WebApplication1.Models.New
+@using WebApplication1.Models
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" })
+{
+
+<div class="form-horizontal">
+    <h4>New</h4>
+    <hr />
+    <div class="form-group">
+        Title
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Title)
+        </div>
+    </div>
+
+    <div class="form-group">
+        Author
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Author)
+        </div>
+    </div>
+
+    <div class="form-group">
+        Text
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Text)
+        </div>
+    </div>
+    <div class="form-group">
+        Class
+        <div class="col-md-10">
+             @foreach(Class sd in ViewBag.Class)
+             {
+                 <input type="checkbox" name="selectClasses" value="@sd.Id"/>@sd.Name<br>
+              }
+    </div>
+    </div>
+    <div class="form-group">
+        View
+        <input type="file" multiple name="upload">
+        <div class="col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

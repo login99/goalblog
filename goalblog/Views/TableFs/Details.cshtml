@@ -1,0 +1,90 @@
+﻿@model WebApplication1.Models.TableF
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TableF</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Icon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WinGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WinGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DrawGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DrawGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoseGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoseGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MissGoal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MissGoal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/New.css")
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/New.css">
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link rel="stylesheet" href="~/Content/Table.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="layout">
+        <header class="head">
+            <h1 class="logo">
+                <a href="~/News/Index">
+                    goalblog
+                </a>
+            </h1>
+            <nav class="menu">
+                <ul class="headmenu">
+                    <li><a href="~/TableFs/Index">Турнірні таблиці</a></li>
+                    <li><a href="~/ChWorlds/Index">Чемпіонат Світу</a></li>
+                    <li><a href="~/TrNews/Index">Трансфери</a></li>
+                    <li><a href="~/AboutSite/Index">Про сайт</a></li>
+                </ul>
+            </nav>
+            <div class="search">
+                @using (@Html.BeginForm("Result", "Search", FormMethod.Post, new { @class = "lefthead" }))
+                {
+                    <input type="image" src="~/Content/icons/actief-zoeken-symbool_318-50386.jpg" class="search-but" />
+                    <input type="search" id="search" name="search">}
+            </div>
+        </header>
+    </div>
+    <div class="wraper">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="contact">
+            <ul class="icons">
+                <li><a href="https://www.facebook.com"><img src="~/Content/icons/facebook-logo.png" alt=""></a></li>
+                <li><a href="https://www.instagram.com/?hl=ru"><img src="~/Content/icons/instagram-social-network-logo-of-photo-camera.png" alt=""></a></li>
+                <li><a href="https://twitter.com/?lang=ua"><img src="~/Content/icons/twitter-letter-logo.png" alt=""></a></li>
+                <li><a href="https://www.youtube.com/?gl=UA&hl=ru"><img src="~/Content/icons/youtube-logo.png" alt=""></a></li>
+            </ul>
+        </div>
+        <nav class="menu menu-fot">
+            <ul class="headmenu fot-menu">
+                <li><a href="~/TableFs/Index">Турнірні таблиці</a></li>
+                <li><a href="~/ChWorlds/Index">Чемпіонат Світу</a></li>
+                <li><a href="~/TrNews/Index">Трансфери</a></li>
+                <li><a href="~/AboutSite/Index">Про сайт</a></li>
+            </ul>
+        </nav>
+    </footer>
+    <div align="center">Всі права захищені &copy; Lutsk NTU 2018</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>

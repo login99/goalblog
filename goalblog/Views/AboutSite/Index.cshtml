@@ -1,0 +1,36 @@
+﻿@using WebApplication1.Models
+
+@{
+    ViewBag.Title = "Інформація про сайт";
+}
+<div class="body">
+    <section class="top-bar">
+        <h2>
+            GOALBLOG - Футбольний блог в якому ви дізнаєтесь найсучасніші новини футболу
+        </h2>
+    </section>
+    <section class="left-sidebar">
+        <div class="container-logo">
+            <a href="~/News/Index">
+                <img src="~/Content/image/logo1.png" alt="Gaol Blog" id="logo2">
+            </a>
+        </div>
+        <ul class="left-menu">
+            @foreach (Class c in ViewBag.menu)
+            {
+                if (@c.Id != 10 && @c.Id != 11)
+                {
+                    <li>@Html.ActionLink(c.Name, "Index", "News", new { Id = c.Id })</li>
+                }
+            }
+        </ul>
+    </section>
+    <section class="head-content">
+        <div class="about-site">
+            <h3>Даний сайт не є комерційним проектом.</h3>
+            <p>Він створювався відповідно до вимог Курсової роботи студента групи ІПЗ-21 Янцевича Павла з предмету Web-програмування
+            Якщо чиїсь авторські права були порушені то це сталося випадково і автор проекту не несе за це відповідальності</p>
+        </div>
+    </section>
+</div>
+
